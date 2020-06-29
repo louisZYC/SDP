@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FBB6CBD-E7E8-4B39-8A38-90A84E76B74F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SDP_Project</RootNamespace>
+    <AssemblyName>SDP_Project</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebDesign.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.20\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.20\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.20\lib\net452\Zstandard.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\AccountManagementController.cs" />
+    <Compile Include="Controller\RegistrationController.cs" />
+    <Compile Include="DataSetMonthlyStatement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetMonthlyStatement.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetReceipt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetReceipt.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\branch.cs" />
+    <Compile Include="Entity\tenant.cs" />
+    <Compile Include="Entity\editShowcase.cs" />
+    <Compile Include="Entity\SalesItem.cs" />
+    <Compile Include="Entity\contract.cs" />
+    <Compile Include="User Interface\StaffUI\2. Rental Record Menu\FormMonthlyStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\2. Rental Record Menu\FormMonthlyStatement.Designer.cs">
+      <DependentUpon>FormMonthlyStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\2. Rental Record Menu\FormGenerateMonthlyStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\2. Rental Record Menu\FormGenerateMonthlyStatement.Designer.cs">
+      <DependentUpon>FormGenerateMonthlyStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormFindID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormFindID.Designer.cs">
+      <DependentUpon>FormFindID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormChashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormChashier.Designer.cs">
+      <DependentUpon>FormChashier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormReceipt.Designer.cs">
+      <DependentUpon>FormReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SDP_PROJDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SDP_PROJDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Showcase.cs" />
+    <Compile Include="Entity\Staff.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormCustomerSalesManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormCustomerSalesManagement.Designer.cs">
+      <DependentUpon>FormCustomerSalesManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\2. Rental Record Menu\FormRentalRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\2. Rental Record Menu\FormRentalRecord.Designer.cs">
+      <DependentUpon>FormRentalRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormTenantRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormTenantRegistration.Designer.cs">
+      <DependentUpon>FormTenantRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormSettleContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormSettleContract.Designer.cs">
+      <DependentUpon>FormSettleContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormContract.Designer.cs">
+      <DependentUpon>FormContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormShowcaseRental.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\1. Showcase Rental Menu\FormShowcaseRental.Designer.cs">
+      <DependentUpon>FormShowcaseRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Admin\FormAccountManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Admin\FormAccountManagement.Designer.cs">
+      <DependentUpon>FormAccountManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Admin\FormRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Admin\FormRegistration.Designer.cs">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\FormContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\FormContainer.Designer.cs">
+      <DependentUpon>FormContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\Admin\AdminUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\Admin\AdminUI.Designer.cs">
+      <DependentUpon>AdminUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="User Interface\LoginUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\LoginUI.Designer.cs">
+      <DependentUpon>LoginUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormShoppingCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormShoppingCart.Designer.cs">
+      <DependentUpon>FormShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\4. Inventory\FormInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\4. Inventory\FormInventory.designer.cs">
+      <DependentUpon>FormInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\4. Inventory\FormNewProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\4. Inventory\FormNewProduct.designer.cs">
+      <DependentUpon>FormNewProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\5. Showcase Management\FormShowcaseEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\5. Showcase Management\FormShowcaseEditor.designer.cs">
+      <DependentUpon>FormShowcaseEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\5. Showcase Management\FormShowcaseManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\5. Showcase Management\FormShowcaseManagement.designer.cs">
+      <DependentUpon>FormShowcaseManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\StaffUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\StaffUI.Designer.cs">
+      <DependentUpon>StaffUI.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="User Interface\StaffUI\1. Showcase Rental Menu\FormFindID.resx">
+      <DependentUpon>FormFindID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\2. Rental Record Menu\FormMonthlyStatement.resx">
+      <DependentUpon>FormMonthlyStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\2. Rental Record Menu\FormGenerateMonthlyStatement.resx">
+      <DependentUpon>FormGenerateMonthlyStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormChashier.resx">
+      <DependentUpon>FormChashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormReceipt.resx">
+      <DependentUpon>FormReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormCustomerSalesManagement.resx">
+      <DependentUpon>FormCustomerSalesManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\2. Rental Record Menu\FormRentalRecord.resx">
+      <DependentUpon>FormRentalRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\1. Showcase Rental Menu\FormTenantRegistration.resx">
+      <DependentUpon>FormTenantRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\1. Showcase Rental Menu\FormContract.resx">
+      <DependentUpon>FormContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Admin\AdminUI.resx">
+      <DependentUpon>AdminUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Admin\FormAccountManagement.resx">
+      <DependentUpon>FormAccountManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\Admin\FormRegistration.resx">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\FormContainer.resx">
+      <DependentUpon>FormContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\1. Showcase Rental Menu\FormSettleContract.resx">
+      <DependentUpon>FormSettleContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\1. Showcase Rental Menu\FormShowcaseRental.resx">
+      <DependentUpon>FormShowcaseRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\LoginUI.resx">
+      <DependentUpon>LoginUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="User Interface\StaffUI\3. Customer Sales Management Menu\FormShoppingCart.resx">
+      <DependentUpon>FormShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\4. Inventory\FormInventory.resx">
+      <DependentUpon>FormInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\4. Inventory\FormNewProduct.resx">
+      <DependentUpon>FormNewProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\5. Showcase Management\FormShowcaseEditor.resx">
+      <DependentUpon>FormShowcaseEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\5. Showcase Management\FormShowcaseManagement.resx">
+      <DependentUpon>FormShowcaseManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\StaffUI.resx">
+      <DependentUpon>StaffUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSetMonthlyStatement.xsc">
+      <DependentUpon>DataSetMonthlyStatement.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetMonthlyStatement.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetMonthlyStatement.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetMonthlyStatement.xss">
+      <DependentUpon>DataSetMonthlyStatement.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReceipt.xsc">
+      <DependentUpon>DataSetReceipt.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReceipt.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetReceipt.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetReceipt.xss">
+      <DependentUpon>DataSetReceipt.xsd</DependentUpon>
+    </None>
+    <None Include="SDP_PROJDataSet1.xsc">
+      <DependentUpon>SDP_PROJDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SDP_PROJDataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SDP_PROJDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SDP_PROJDataSet1.xss">
+      <DependentUpon>SDP_PROJDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
