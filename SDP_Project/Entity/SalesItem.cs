@@ -8,7 +8,7 @@ namespace SDP_Project.Entity
 {
     public class SalesItem : IEquatable<SalesItem>
     {
-        
+        //new comment
         public int amount { get; set; }
         public String productid { get; set; }
         public String productname { get; set; }
