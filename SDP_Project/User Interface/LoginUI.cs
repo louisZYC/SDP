@@ -51,6 +51,9 @@ namespace SDP_Project
             txtStaffID.Focus();
         }
 
+        private void LoginUI_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

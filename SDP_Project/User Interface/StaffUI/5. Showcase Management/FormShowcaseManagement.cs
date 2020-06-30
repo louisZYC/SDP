@@ -54,6 +54,7 @@ namespace SDP_Project.User_Interface
             //dgvSelected.Remove(lstSelected.SelectedItem);
         }//double click to delete items
 
+        //this is the combobox setted all the branch you can select one to connect to db get the table
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex > -1)
@@ -67,6 +68,7 @@ namespace SDP_Project.User_Interface
                 branchName = comboBox1.Items[comboBox1.SelectedIndex].ToString();
                 dgvShowcaseList.Rows.Clear();
                 dgvSelected.Rows.Clear();
+                //formID = branch id throw it to the function to set the dgv
                 initializeShowcaseRecord(formID);
                 initializeAvailibility();
             }
@@ -132,6 +134,10 @@ namespace SDP_Project.User_Interface
                     bandSelected = dgvSelected.Rows[i];
                     bandSelected.Visible = false;
                 }
+                tbSid.ResetText();
+                tbRent.ResetText();
+                cmbCategory.ResetText();
+                cbPrivate.Checked=false;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -237,6 +243,14 @@ namespace SDP_Project.User_Interface
                 tbSid.Text = row.Cells[0].Value.ToString();
                 // tbRent.Value= decimal.Parse(row.Cells[1].Value.ToString());
                 String rentS = row.Cells[1].Value.ToString();
+                if(row.Cells[2].Value.ToString() == "Private")
+                {
+                    cbPrivate.Checked = true;
+                }
+                else
+                {
+                    cbPrivate.Checked = false;
+                }
                 tbRent.Value = decimal.Parse(rentS, CultureInfo.InvariantCulture);
                 cmbCategory.Text = row.Cells[3].Value.ToString();
             }
@@ -253,7 +267,7 @@ namespace SDP_Project.User_Interface
             if (row != null)
             {
 
-                if (row.Cells[2].Value == "Private")
+                if (!cbPrivate.Checked)
                 {
                     row.Cells[2].Value = "Normal";
 
@@ -355,6 +369,7 @@ namespace SDP_Project.User_Interface
             }
         }
 
+        //this is a search funtion
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             String searchtext = tbSearch.Text;
@@ -377,6 +392,40 @@ namespace SDP_Project.User_Interface
                     bandlist.Visible = true;
                 }
             }
+        }
+
+        private void bUpdata_Click(object sender, EventArgs e)
+        {
+            String res = "";
+            try
+            {
+                for (int i = 0; i < dgvSelected.Rows.Count; i++)
+                {
+                    bandSelected = dgvSelected.Rows[i];
+                    if (bandSelected.Visible)
+                    {
+                    
+                            row = dgvSelected.Rows[i];
+                            SQL = "UPDATE showcase SET rent=" + row.Cells[1].Value.ToString() + " ,genre ='" + row.Cells[2].Value.ToString() + "' ,category='" + row.Cells[3].Value.ToString() + "' WHERE showcaseid='" + row.Cells[0].Value.ToString() + "';";
+                            res += "Showcase:" + row.Cells[0].Value.ToString() + " IN " + branchName + " rent : " + row.Cells[1].Value.ToString() + ", genre : " + row.Cells[2].Value.ToString() + ", category : " + row.Cells[3].Value.ToString() + " Is updated \n";
+                            cmd = new MySqlCommand(SQL, FormContainer.conn);
+                            myData = cmd.ExecuteReader();
+                            myData.Close();
+
+                    }
+                    
+                }
+
+            //reset table
+            dgvShowcaseList.Rows.Clear();
+            dgvSelected.Rows.Clear();
+            initializeShowcaseRecord(formID);
+            initializeAvailibility();
+            }catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " : " + ex.Message);
+            }
+            MessageBox.Show(res);
         }
 
         private void dgvSelected_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

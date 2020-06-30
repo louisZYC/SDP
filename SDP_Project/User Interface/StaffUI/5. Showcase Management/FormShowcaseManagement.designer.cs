@@ -231,6 +231,7 @@
             this.bUpdata.TabIndex = 8;
             this.bUpdata.Text = "Batch Update";
             this.bUpdata.UseVisualStyleBackColor = true;
+            this.bUpdata.Click += new System.EventHandler(this.bUpdata_Click);
             // 
             // sUpdata
             // 

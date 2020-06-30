@@ -105,6 +105,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "LoginUI";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.LoginUI_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
