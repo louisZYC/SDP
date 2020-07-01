@@ -41,6 +41,13 @@
             this.select = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnShoppingCart = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.cmbShop = new System.Windows.Forms.ComboBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtShowcaseID = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,9 +139,9 @@
             // 
             // btnShoppingCart
             // 
-            this.btnShoppingCart.Location = new System.Drawing.Point(1127, 198);
+            this.btnShoppingCart.Location = new System.Drawing.Point(1050, 356);
             this.btnShoppingCart.Name = "btnShoppingCart";
-            this.btnShoppingCart.Size = new System.Drawing.Size(158, 81);
+            this.btnShoppingCart.Size = new System.Drawing.Size(400, 81);
             this.btnShoppingCart.TabIndex = 1;
             this.btnShoppingCart.Text = "Shopping Cart";
             this.btnShoppingCart.UseVisualStyleBackColor = true;
@@ -151,12 +158,82 @@
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
+            // cmbShop
+            // 
+            this.cmbShop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmbShop.FormattingEnabled = true;
+            this.cmbShop.Location = new System.Drawing.Point(1050, 0);
+            this.cmbShop.Name = "cmbShop";
+            this.cmbShop.Size = new System.Drawing.Size(400, 33);
+            this.cmbShop.TabIndex = 2;
+            this.cmbShop.Text = "Select The shop";
+            this.cmbShop.SelectedIndexChanged += new System.EventHandler(this.cmbShop_SelectedIndexChanged_1);
+            // 
+            // txtProductID
+            // 
+            this.txtProductID.Location = new System.Drawing.Point(1224, 119);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.Size = new System.Drawing.Size(172, 31);
+            this.txtProductID.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1094, 122);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 25);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Product ID: ";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(1099, 204);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(187, 50);
+            this.btnSearch.TabIndex = 5;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1069, 164);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Showcase ID: ";
+            // 
+            // txtShowcaseID
+            // 
+            this.txtShowcaseID.Location = new System.Drawing.Point(1224, 158);
+            this.txtShowcaseID.Name = "txtShowcaseID";
+            this.txtShowcaseID.Size = new System.Drawing.Size(172, 31);
+            this.txtShowcaseID.TabIndex = 6;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(1292, 204);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(104, 50);
+            this.btnClear.TabIndex = 8;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // FormCustomerSalesManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1450, 750);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtShowcaseID);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtProductID);
+            this.Controls.Add(this.cmbShop);
             this.Controls.Add(this.btnShoppingCart);
             this.Controls.Add(this.dgvProductList);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -167,6 +244,7 @@
             this.Load += new System.EventHandler(this.FormCustomerSalesManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -182,5 +260,12 @@
         private System.Windows.Forms.DataGridViewImageColumn select;
         private System.Windows.Forms.Button btnShoppingCart;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.ComboBox cmbShop;
+        private System.Windows.Forms.TextBox txtProductID;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtShowcaseID;
+        private System.Windows.Forms.Button btnClear;
     }
 }

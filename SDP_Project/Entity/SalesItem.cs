@@ -27,7 +27,8 @@ namespace SDP_Project.Entity
 
         public override string ToString()
         {
-            return "ID: " + productid + "   amount: " + amount;
+            return "ID: " + productid + "   amount: " + amount+
+                "Name: " + productname;
         }
 
         public decimal calTotal()

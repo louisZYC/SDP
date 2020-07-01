@@ -27,8 +27,7 @@ namespace SDP_Project
         private void FormShowcaseRental_Load(object sender, EventArgs e)
         {
             //fill up datagripview with database;
-            initializeShowcaseRecord();
-            initializeAvailibility();
+           
             getBranchformDB();
             loadCombox();
         }
