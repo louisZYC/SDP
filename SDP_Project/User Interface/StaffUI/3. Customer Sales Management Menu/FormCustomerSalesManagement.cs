@@ -19,22 +19,26 @@ namespace SDP_Project.User_Interface
         private MySqlCommand cmd;
         private MySqlDataReader myData;
         FormShoppingCart frmShoppingCart;
+        String shopID;
+        List<branch> branchDB;
         List<SalesItem> shoppingCart;//List<> is similiar with Linkedlist
         public FormCustomerSalesManagement()
         {
             InitializeComponent();
             shoppingCart = new List<SalesItem>();
+            branchDB = new List<branch>();
         }
         private void FormCustomerSalesManagement_Load(object sender, EventArgs e)
         {
-            intializeDataGridView();
+            getBranchformDB();
+            loadCombox();
         }
-        public void intializeDataGridView()
+        public void intializeDataGridView(String shopID)
         {
             dgvProductList.Rows.Clear();
             try
             {
-                SQL = "select * from product where productAmount >=0;";
+                SQL = "select p.productID, p.showcaseid, p.productName,p.productAmount,p.price,p.Remark from product as p inner join showcase as s on p.showcaseid = s.showcaseid where productAmount >=0 and s.branchid ='"+shopID+"';";
                 cmd = new MySqlCommand(SQL, FormContainer.conn);
                 myData = cmd.ExecuteReader();
                 if (myData.HasRows)
@@ -121,7 +125,61 @@ namespace SDP_Project.User_Interface
         public void OnPaymentSettled()
         {
             shoppingCart.Clear();
-            intializeDataGridView();
+            intializeDataGridView(shopID);
         }
+
+
+        #region showcase management methods
+        public void getBranchformDB()
+        {
+            try
+            {
+                SQL = "select * from branch";
+                cmd = new MySqlCommand(SQL, FormContainer.conn);
+                myData = cmd.ExecuteReader();
+                while (myData.Read())
+                {
+                    branchDB.Add(new branch(myData["branchid"].ToString(), (int)myData["showcaseNum"], myData["branchName"].ToString()));
+                }
+                myData.Close();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " : " + ex.Message);
+            }
+        }
+
+        public void loadCombox()
+        {
+            foreach (branch b in branchDB)
+            {
+                cmbShop.Items.Add(b.BranchName);
+            }
+
+        }
+
+
+        private void cmbShop_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            shopID = listcontainer(cmbShop.Items[cmbShop.SelectedIndex].ToString());
+            dgvProductList.Rows.Clear();
+            intializeDataGridView(shopID);
+        }
+        public String listcontainer(String other)
+        {
+            foreach (branch b in branchDB)
+            {
+                if (b.BranchName == other)
+                {
+                    return b.Branchid;
+                }
+
+            }
+            return "";
+        }
+
+        #endregion
+
+
     }
 }
