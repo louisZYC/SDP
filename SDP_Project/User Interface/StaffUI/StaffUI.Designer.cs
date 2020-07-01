@@ -37,6 +37,7 @@
             this.btnShowcaseRental = new System.Windows.Forms.Button();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlChild = new System.Windows.Forms.Panel();
+            this.btnSalesRecord = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlChild.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSalesRecord);
             this.panel1.Controls.Add(this.btnShowcaseManagement);
             this.panel1.Controls.Add(this.btnInventory);
             this.panel1.Controls.Add(this.btnCustomerSalesManagement);
@@ -136,6 +138,17 @@
             this.pnlChild.Size = new System.Drawing.Size(1476, 768);
             this.pnlChild.TabIndex = 2;
             // 
+            // btnSalesRecord
+            // 
+            this.btnSalesRecord.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSalesRecord.Location = new System.Drawing.Point(0, 490);
+            this.btnSalesRecord.Name = "btnSalesRecord";
+            this.btnSalesRecord.Size = new System.Drawing.Size(224, 98);
+            this.btnSalesRecord.TabIndex = 5;
+            this.btnSalesRecord.Text = "Sales Record";
+            this.btnSalesRecord.UseVisualStyleBackColor = true;
+            this.btnSalesRecord.Click += new System.EventHandler(this.btnSalesRecord_Click);
+            // 
             // StaffUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -168,5 +181,6 @@
         private System.Windows.Forms.Button btnRentalRecord;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Panel pnlChild;
+        private System.Windows.Forms.Button btnSalesRecord;
     }
 }

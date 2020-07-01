@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AccountManagementController.cs" />
+    <Compile Include="Controller\ListManager.cs" />
     <Compile Include="Controller\RegistrationController.cs" />
     <Compile Include="DataSetMonthlyStatement.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -132,10 +133,23 @@
       <DependentUpon>DataSetReceipt.xsd</DependentUpon>
     </Compile>
     <Compile Include="Entity\branch.cs" />
+    <Compile Include="Entity\salesrecord.cs" />
     <Compile Include="Entity\tenant.cs" />
     <Compile Include="Entity\editShowcase.cs" />
     <Compile Include="Entity\SalesItem.cs" />
     <Compile Include="Entity\contract.cs" />
+    <Compile Include="User Interface\StaffUI\6. Sales Record\FormSalesItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\6. Sales Record\FormSalesItems.Designer.cs">
+      <DependentUpon>FormSalesItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\6. Sales Record\FormSalesRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\StaffUI\6. Sales Record\FormSalesRecord.Designer.cs">
+      <DependentUpon>FormSalesRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Interface\StaffUI\2. Rental Record Menu\FormMonthlyStatement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +367,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Interface\StaffUI\5. Showcase Management\FormShowcaseManagement.resx">
       <DependentUpon>FormShowcaseManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\6. Sales Record\FormSalesItems.resx">
+      <DependentUpon>FormSalesItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\StaffUI\6. Sales Record\FormSalesRecord.resx">
+      <DependentUpon>FormSalesRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Interface\StaffUI\StaffUI.resx">
       <DependentUpon>StaffUI.cs</DependentUpon>

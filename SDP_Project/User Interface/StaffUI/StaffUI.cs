@@ -19,6 +19,7 @@ namespace SDP_Project
          FormCustomerSalesManagement frmCSM;
         FormShowcaseManagement frmShowcaseManagement;
         FormInventory frmInventory;
+        FormSalesRecord frmSalesrecord;
         public StaffUI(FormContainer frmContainer, Staff s)
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace SDP_Project
             frmCSM = new FormCustomerSalesManagement();
             frmShowcaseManagement = new FormShowcaseManagement();
             frmInventory = new FormInventory();
+            frmSalesrecord = new FormSalesRecord();
         }
         private void StaffUI_Load(object sender, EventArgs e)
         {
@@ -80,6 +82,11 @@ namespace SDP_Project
         public void initializeAvailibility()
         {
             frmShowcaseRental.initializeAvailibility();
+        }
+
+        private void btnSalesRecord_Click(object sender, EventArgs e)
+        {
+            openChildForm(frmSalesrecord);
         }
     }
 }
