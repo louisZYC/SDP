@@ -23,5 +23,15 @@ namespace SDP_Project.Entity
             if (other == null) return false;
             return (this.salesrecordID.Equals(other.salesrecordID));
         }
+
+        public decimal getTotalAmount()
+        {
+            decimal totalAmount = 0;
+            foreach(SalesItem si in _salesitems)
+            {
+                totalAmount += si.calTotal();
+            }
+            return totalAmount;
+        }
     }
 }

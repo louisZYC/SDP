@@ -96,13 +96,7 @@ namespace SDP_Project
         public void loadDgvSalesRecords(String shopID) {
             dgvSalesRecord.Rows.Clear();
 
-            //for (int i = 0; i < _salesrecords.Count; i++)
-            //{
-            //    dgvSalesRecord.Rows.Add();
-            //    dgvSalesRecord.Rows[i].Cells[salesrecordid.Index].Value = _salesrecords[i].salesrecordID;
-            //    dgvSalesRecord.Rows[i].Cells[staffid.Index].Value = _salesrecords[i].staffID;
-            //    dgvSalesRecord.Rows[i].Cells[salesdate.Index].Value = _salesrecords[i].salesdate;
-            //}
+            
 
             List<salesrecord> salesrecords = new List<salesrecord>();
             salesrecords = _salesrecords.Where(x => x.branchid.Equals(shopID)).ToList();
@@ -112,6 +106,7 @@ namespace SDP_Project
                 dgvSalesRecord.Rows[i].Cells[salesrecordid.Index].Value = salesrecords[i].salesrecordID;
                 dgvSalesRecord.Rows[i].Cells[staffid.Index].Value = salesrecords[i].staffID;
                 dgvSalesRecord.Rows[i].Cells[salesdate.Index].Value = salesrecords[i].salesdate;
+                dgvSalesRecord.Rows[i].Cells[totalamount.Index].Value = salesrecords[i].getTotalAmount();
             }
             salesrecords = null;
         }

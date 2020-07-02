@@ -76,7 +76,7 @@
             // 
             // name
             // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.name.HeaderText = "Name";
             this.name.Name = "name";
             this.name.ReadOnly = true;
