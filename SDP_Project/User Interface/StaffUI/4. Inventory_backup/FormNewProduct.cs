@@ -40,16 +40,17 @@ namespace SDP_Project.User_Interface
 
             if (tbPName.Text != "" && tbPrice.Text != "" && tbqty.Text != "" && tbSId.Text != "")
             {
-                string[] row = {tbSId.Text, tbPName.Text , tbqty.Text ,tbPrice.Text,tbRemark.Text};
+                string[] row = { tbSId.Text, tbPName.Text, tbqty.Text, tbPrice.Text, tbRemark.Text };
                 dgvNewall.Rows.Add(row);
             }
-            else {
-                String errormsg= "Please input \n";
-                if(tbPName.Text == "") { errormsg += "Product Name \n" ; }
+            else
+            {
+                String errormsg = "Please input \n";
+                if (tbPName.Text == "") { errormsg += "Product Name \n"; }
                 if (tbPrice.Text == "") { errormsg += "Price \n"; }
                 if (tbqty.Text == "") { errormsg += "Quantity \n"; }
                 if (tbSId.Text == "") { errormsg += "Please select showcase \n"; }
-                MessageBox.Show(errormsg,"Error");
+                MessageBox.Show(errormsg, "Error");
             }
 
         }
@@ -92,12 +93,12 @@ namespace SDP_Project.User_Interface
 
 
                 SQL = "INSERT INTO product " +
-                      "VALUES ('" + tmpPId + "','" + 
-                                    tmpSId + "','" + 
-                                    PName + "','" + 
-                                    Qty + "','" + 
-                                    Price + "','" + 
-                                    today.ToString("yyyy-MM-dd") + "','" + 
+                      "VALUES ('" + tmpPId + "','" +
+                                    tmpSId + "','" +
+                                    PName + "','" +
+                                    Qty + "','" +
+                                    Price + "','" +
+                                    today.ToString("yyyy-MM-dd") + "','" +
                                     Remark + "');";
                 cmd = new MySqlCommand(SQL, FormContainer.conn);
                 myData = cmd.ExecuteReader();
@@ -105,5 +106,5 @@ namespace SDP_Project.User_Interface
             }
         }
     }
-    }
+}
 
