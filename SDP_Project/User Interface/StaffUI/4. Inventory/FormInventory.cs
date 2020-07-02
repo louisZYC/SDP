@@ -48,7 +48,7 @@ namespace SDP_Project.User_Interface
             dgvInventory.Rows.Clear();
             try
             {
-                SQL = "select * from product where productAmount >= 0;";
+                SQL = "select * from product where enable/disable = 0;";
                 cmd = new MySqlCommand(SQL, FormContainer.conn);
                 myData = cmd.ExecuteReader();
                 if (myData.HasRows)
@@ -100,7 +100,7 @@ namespace SDP_Project.User_Interface
         {
             if (MessageBox.Show("Do you want to delete record?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                SQL = "UPDATE product SET productAmount = '"+-1+"' WHERE productID='" + tbPId.Text + "';";
+                SQL = "UPDATE product SET enable/disable = '"+ 1 +"' WHERE productID='" + tbPId.Text + "';";
                 cmd = new MySqlCommand(SQL, FormContainer.conn);
                 myData = cmd.ExecuteReader();
                 myData.Close();
