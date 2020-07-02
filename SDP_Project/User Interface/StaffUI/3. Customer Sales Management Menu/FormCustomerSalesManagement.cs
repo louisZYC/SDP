@@ -108,7 +108,7 @@ namespace SDP_Project.User_Interface
         {
             String prodID = txtProductID.Text;
             String showcaseID = txtShowcaseID.Text;
-            searchByProdID(shopID, prodID);
+            //searchByProdID(shopID, prodID);
             searchByshowcaseID(shopID,showcaseID);
         }
 
@@ -116,6 +116,7 @@ namespace SDP_Project.User_Interface
         {
             txtShowcaseID.Text = String.Empty;
             txtProductID.Text = String.Empty;
+            intializeDataGridView(shopID);
         }
 
         #endregion
@@ -167,6 +168,7 @@ namespace SDP_Project.User_Interface
                     myData = cmd.ExecuteReader();
                     if (myData.HasRows)
                     {
+                        dgvProductList.Rows.Clear();
                         while (myData.Read())
                         {
                             dgvProductList.Rows.Add(myData["productid"], myData["showcaseid"], myData["productName"], myData["productamount"], myData["price"], myData["remark"]);
@@ -183,7 +185,6 @@ namespace SDP_Project.User_Interface
         }
         public void searchByshowcaseID(String shopID, String showcaseID)
         {
-            dgvProductList.Rows.Clear();
             bool isEmpty = true;
             if (showcaseID.Trim().Length > 0)
             {
@@ -200,6 +201,7 @@ namespace SDP_Project.User_Interface
                     myData = cmd.ExecuteReader();
                     if (myData.HasRows)
                     {
+                        dgvProductList.Rows.Clear();
                         while (myData.Read())
                         {
                             dgvProductList.Rows.Add(myData["productid"], myData["showcaseid"], myData["productName"], myData["productamount"], myData["price"], myData["remark"]);
