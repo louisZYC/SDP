@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.lblHeader = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvSalesItems = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesItems)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -51,32 +51,32 @@
             this.lblHeader.Text = "Sales Items";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // dgvSalesItems
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvSalesItems.AllowUserToAddRows = false;
+            this.dgvSalesItems.AllowUserToDeleteRows = false;
+            this.dgvSalesItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalesItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.quantity,
             this.discount,
             this.unitprice,
             this.totalamount});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 89);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 42;
-            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.Size = new System.Drawing.Size(784, 436);
-            this.dataGridView1.TabIndex = 6;
+            this.dgvSalesItems.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvSalesItems.Location = new System.Drawing.Point(0, 89);
+            this.dgvSalesItems.Margin = new System.Windows.Forms.Padding(6);
+            this.dgvSalesItems.Name = "dgvSalesItems";
+            this.dgvSalesItems.ReadOnly = true;
+            this.dgvSalesItems.RowHeadersVisible = false;
+            this.dgvSalesItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvSalesItems.RowTemplate.Height = 42;
+            this.dgvSalesItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesItems.Size = new System.Drawing.Size(784, 436);
+            this.dgvSalesItems.TabIndex = 6;
             // 
             // name
             // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.name.HeaderText = "Name";
             this.name.Name = "name";
             this.name.ReadOnly = true;
@@ -92,25 +92,25 @@
             // 
             // discount
             // 
+            this.discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.discount.HeaderText = "discount (Integer)";
             this.discount.Name = "discount";
             this.discount.ReadOnly = true;
+            this.discount.Width = 186;
             // 
             // unitprice
             // 
-            this.unitprice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.unitprice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.unitprice.HeaderText = "Unit Price";
             this.unitprice.Name = "unitprice";
             this.unitprice.ReadOnly = true;
-            this.unitprice.Width = 119;
             // 
             // totalamount
             // 
-            this.totalamount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.totalamount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.totalamount.HeaderText = "Total Amount";
             this.totalamount.Name = "totalamount";
             this.totalamount.ReadOnly = true;
-            this.totalamount.Width = 150;
             // 
             // FormSalesItems
             // 
@@ -118,14 +118,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(784, 682);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvSalesItems);
             this.Controls.Add(this.lblHeader);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormSalesItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormSalesItems";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormSalesItems_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -133,7 +134,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblHeader;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvSalesItems;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn discount;
