@@ -21,7 +21,7 @@ namespace SDP_Project.User_Interface
         {
             InitializeComponent();
         }
-
+        //test
         private void FormNewProduct_Load(object sender, EventArgs e)
         {
 
