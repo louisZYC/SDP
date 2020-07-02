@@ -144,7 +144,7 @@ namespace SDP_Project.User_Interface
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            FormNewProduct FormNewProduct = new FormNewProduct();
+            FormNewProduct FormNewProduct = new FormNewProduct(this);
             FormNewProduct.Show();
         }
     }

@@ -17,9 +17,11 @@ namespace SDP_Project.User_Interface
         private MySqlCommand cmd;
         private MySqlDataReader myData;
         DateTime today = DateTime.Today;
-        public FormNewProduct()
+        FormInventory frm;
+        public FormNewProduct(FormInventory frm)
         {
             InitializeComponent();
+            this.frm = frm;
         }
         
         private void FormNewProduct_Load(object sender, EventArgs e)
@@ -71,7 +73,7 @@ namespace SDP_Project.User_Interface
         {
             for (int i = 0; i < dgvNewall.Rows.Count; i++)
             {
-                String tmpSId = dgvNewall.Rows[i].Cells["shwocaseID"].Value.ToString();
+                String tmpSId = dgvNewall.Rows[i].Cells[0].Value.ToString();
                 SQL = "SELECT Count(productID) AS cPId FROM product WHERE showcaseid = '" + tmpSId + "'; ";
                 cmd = new MySqlCommand(SQL, FormContainer.conn);
                 myData = cmd.ExecuteReader();
@@ -84,10 +86,11 @@ namespace SDP_Project.User_Interface
                 myData.Close();
 
                 String tmpPId = tmpSId + sequenceNum.ToString("D3");
-                String PName = dgvNewall.Rows[i].Cells["productName"].Value.ToString();
-                String Qty = dgvNewall.Rows[i].Cells["Qty"].Value.ToString();
-                String Price = dgvNewall.Rows[i].Cells["Price"].Value.ToString();
-                String Remark = dgvNewall.Rows[i].Cells["Remark"].Value.ToString();
+                String PName = dgvNewall.Rows[i].Cells[1].Value.ToString();
+                String Qty = dgvNewall.Rows[i].Cells[2].Value.ToString();
+                String Price = dgvNewall.Rows[i].Cells[3].Value.ToString();
+                String Remark = dgvNewall.Rows[i].Cells[4].Value.ToString();
+                Int16 showit = 0;
 
 
 
@@ -98,11 +101,15 @@ namespace SDP_Project.User_Interface
                                     Qty + "','" + 
                                     Price + "','" + 
                                     today.ToString("yyyy-MM-dd") + "','" + 
-                                    Remark + "');";
+                                    Remark + "',"+
+                                    showit +
+                                    ");";
                 cmd = new MySqlCommand(SQL, FormContainer.conn);
                 myData = cmd.ExecuteReader();
                 myData.Close();
             }
+            frm.intializeDataGridView();
+            this.Close();
         }
     }
     }
