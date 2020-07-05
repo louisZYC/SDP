@@ -30,7 +30,7 @@ namespace SDP_Project
             this.Dock = DockStyle.Fill;
             frmShowcaseRental = new FormShowcaseRental();
             frmRentalRecord = new FormRentalRecord(this);
-            frmCSM = new FormCustomerSalesManagement();
+            frmCSM = new FormCustomerSalesManagement(this);
             frmShowcaseManagement = new FormShowcaseManagement();
             frmInventory = new FormInventory();
             frmSalesrecord = new FormSalesRecord();
@@ -90,11 +90,20 @@ namespace SDP_Project
             openChildForm(frmSalesrecord);
         }
 
+
+
         //callback function
         public void initializeAvailibility()
         {
+            if(frmShowcaseRental!=null)
             frmShowcaseRental.initializeAvailibility();
         } 
+
+        public void onPaymentSettled()
+        {
+            if (frmSalesrecord != null)
+                frmSalesrecord.refreshdgv();
+        }
 
     }
 }

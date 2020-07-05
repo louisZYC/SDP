@@ -22,12 +22,14 @@ namespace SDP_Project.User_Interface
         String shopID;
         List<branch> branchDB;
         List<SalesItem> shoppingCart;//List<> is similiar with Linkedlist
+        StaffUI staffui;
  
-        public FormCustomerSalesManagement()
+        public FormCustomerSalesManagement(StaffUI staffui)
         {
             InitializeComponent();
             shoppingCart = new List<SalesItem>();
             branchDB = new List<branch>();
+            this.staffui = staffui;
         }
 
         #region event handler
@@ -121,8 +123,11 @@ namespace SDP_Project.User_Interface
         }
 
         #endregion
+
+        
         public void OnPaymentSettled()
         {
+            staffui.onPaymentSettled();
             shoppingCart.Clear();
             intializeDataGridView(shopID);
         }

@@ -210,5 +210,12 @@ namespace SDP_Project
             if(shopID!=null)
             loadDgvSalesRecords(shopID);
         }
+
+        public void refreshdgv()
+        {
+            getListofSalesrecords();
+            if (shopID != null)
+                loadDgvSalesRecords(shopID);
+        }
     }
 }
