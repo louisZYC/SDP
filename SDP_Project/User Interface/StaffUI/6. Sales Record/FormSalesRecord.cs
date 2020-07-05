@@ -38,7 +38,7 @@ namespace SDP_Project
         {
             getBranchformDB();
             loadCombox();
-            _salesrecords = ListManager.loadSalesrecords();
+            getListofSalesrecords();
         }
 
         #region showcasemanagement methods
@@ -93,6 +93,11 @@ namespace SDP_Project
 
         #endregion
 
+        public void getListofSalesrecords()
+        {
+            _salesrecords = ListManager.loadSalesrecords();
+        }
+
         public void loadDgvSalesRecords(String shopID) {
             dgvSalesRecord.Rows.Clear();
 
@@ -109,7 +114,51 @@ namespace SDP_Project
                 dgvSalesRecord.Rows[i].Cells[totalamount.Index].Value = salesrecords[i].getTotalAmount();
             }
             salesrecords = null;
+            getTotalsales();
         }
+
+        public void filterByMonth(String shopID)
+        {
+            dgvSalesRecord.Rows.Clear();
+            DateTime dtpValue = dtpMonth.Value;
+            DateTime startOfMonth = new DateTime(dtpValue.Year, dtpValue.Month, 1);
+            DateTime endOfMonth = startOfMonth.AddMonths(1).AddDays(-1);
+
+            List<salesrecord> salesrecords = new List<salesrecord>();
+            salesrecords = _salesrecords.Where(x => x.salesdate.CompareTo(startOfMonth)>=0 && x.salesdate.CompareTo(endOfMonth)<=0).ToList();
+            for (int i = 0; i < salesrecords.Count; i++)
+            {
+                dgvSalesRecord.Rows.Add();
+                dgvSalesRecord.Rows[i].Cells[salesrecordid.Index].Value = salesrecords[i].salesrecordID;
+                dgvSalesRecord.Rows[i].Cells[staffid.Index].Value = salesrecords[i].staffID;
+                dgvSalesRecord.Rows[i].Cells[salesdate.Index].Value = salesrecords[i].salesdate;
+                dgvSalesRecord.Rows[i].Cells[totalamount.Index].Value = salesrecords[i].getTotalAmount();
+            }
+            salesrecords = null;
+            getTotalsales();
+        }
+
+        public void filterByDay(String shopID)
+        {
+            dgvSalesRecord.Rows.Clear();
+            DateTime dtpValue = dtpDay.Value;
+            DateTime startOfDay = new DateTime(dtpValue.Year, dtpValue.Month, dtpValue.Day,0,0,0);
+            DateTime endOfDay = startOfDay.AddDays(1).AddSeconds(-1);
+
+            List<salesrecord> salesrecords = new List<salesrecord>();
+            salesrecords = _salesrecords.Where(x => x.salesdate.CompareTo(startOfDay) >= 0 && x.salesdate.CompareTo(endOfDay) <= 0).ToList();
+            for (int i = 0; i < salesrecords.Count; i++)
+            {
+                dgvSalesRecord.Rows.Add();
+                dgvSalesRecord.Rows[i].Cells[salesrecordid.Index].Value = salesrecords[i].salesrecordID;
+                dgvSalesRecord.Rows[i].Cells[staffid.Index].Value = salesrecords[i].staffID;
+                dgvSalesRecord.Rows[i].Cells[salesdate.Index].Value = salesrecords[i].salesdate;
+                dgvSalesRecord.Rows[i].Cells[totalamount.Index].Value = salesrecords[i].getTotalAmount();
+            }
+            salesrecords = null;
+            getTotalsales();
+        }
+
 
         private void dgvSalesRecord_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -131,6 +180,35 @@ namespace SDP_Project
             }
 
             
+        }
+
+        public void getTotalsales()
+        {
+            decimal totalsales = 0;
+            foreach(DataGridViewRow r in dgvSalesRecord.Rows)
+            {
+                totalsales += (decimal)r.Cells[totalamount.Index].Value;
+            }
+            lblTotal.Text = totalsales.ToString();
+        }
+
+        private void btnMonthfilter_Click(object sender, EventArgs e)
+        {
+            if(shopID != null)
+            filterByMonth(shopID);
+        }
+
+        private void btnDayfilter_Click(object sender, EventArgs e)
+        {
+            if (shopID != null)
+                filterByDay(shopID);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            getListofSalesrecords();
+            if(shopID!=null)
+            loadDgvSalesRecords(shopID);
         }
     }
 }

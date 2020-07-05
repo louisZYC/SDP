@@ -24,6 +24,7 @@ namespace SDP_Project.User_Interface
         DateTime today;
         String SalesRecordID;
         decimal cashTendered = 0;
+        //delegate
 
 
         public FormShoppingCart(FormCustomerSalesManagement frmCSM,List<SalesItem> shoppingcart)
@@ -100,8 +101,9 @@ namespace SDP_Project.User_Interface
                     //create receipt
                     FormReceipt frmReceipt = new FormReceipt(shoppingcart, SalesRecordID, cashTendered);
                     frmReceipt.ShowDialog();
-                    //
+                    //callback method
                     frmCSM.OnPaymentSettled();
+                    
                     this.Close();
                 }
             }

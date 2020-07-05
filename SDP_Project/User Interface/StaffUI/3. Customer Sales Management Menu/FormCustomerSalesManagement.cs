@@ -22,6 +22,7 @@ namespace SDP_Project.User_Interface
         String shopID;
         List<branch> branchDB;
         List<SalesItem> shoppingCart;//List<> is similiar with Linkedlist
+ 
         public FormCustomerSalesManagement()
         {
             InitializeComponent();
@@ -108,7 +109,7 @@ namespace SDP_Project.User_Interface
         {
             String prodID = txtProductID.Text;
             String showcaseID = txtShowcaseID.Text;
-            //searchByProdID(shopID, prodID);
+            searchByProdID(shopID, prodID);
             searchByshowcaseID(shopID,showcaseID);
         }
 
